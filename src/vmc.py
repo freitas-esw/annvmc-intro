@@ -116,7 +116,7 @@ def run(cfg: ConfigDict):
 
   # Create the file to save the data stats of each step
   scheme = ['t', 'W.Ene.', 'W.Ene.Var.', 'Energy', 'Kinetic', 'KJF', 'External', 'Interaction', 'Potential', 'Accept']
-  stats_file = utils.create_file(cfg.log.save_path, 'vmc-stats-'+cfg.log.label, scheme=scheme)
+  stats_file = utils.create_file(cfg.log.save_path, 'vmc-stats', scheme=scheme)
 
   # Define the variable to store the data stats
   observables = stats.StatDataVMC(alpha = cfg.vmc.alpha)
@@ -151,7 +151,7 @@ def run(cfg: ConfigDict):
     # Checkpointing
     if (t+1) % cfg.log.save_frequency == 0 or (t+1) == cfg.vmc.iterations:
       utils.save_ckpt(cfg.log.save_path, 
-                      'vmc-ckpt-'+cfg.log.label+f'-{t:06d}',
+                      f'vmc-ckpt-{t:06d}',
                       t=t, 
                       pos=pos, 
                       pars=pars,
@@ -167,8 +167,8 @@ def run(cfg: ConfigDict):
   pstep = utils.pmap(step, donate_argnums=(1))
 
   # Create the file to save the data stats of each Monte Carlo integration step
-  stats_file = utils.create_file(cfg.log.save_path, 'mc-integration-'+cfg.log.label, scheme=scheme)
-  walkers_file = open(cfg.log.save_path+'/'+cfg.log.label+'-walkers.npy', 'wb')
+  stats_file = utils.create_file(cfg.log.save_path, 'mc-integration', scheme=scheme)
+  walkers_file = open(cfg.log.save_path+'/walkers.npy', 'wb')
 
   # Reset the variable to store the data stats
   observables = stats.StatDataVMC(alpha = cfg.vmc.alpha)

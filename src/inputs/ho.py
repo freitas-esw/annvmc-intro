@@ -37,7 +37,7 @@ def get_config():
 #  cfg.system.args.delta = 0.2      # Screenning factor
 
   # Initialization width for particle positions
-  cfg.system.init_width = 0.5
+  cfg.system.init_width = 4.
 
   # Artificial neural network architecture
   in_size = cfg.system.ndim * cfg.system.npart
@@ -56,7 +56,7 @@ def get_config():
 
   # Log labels and checkpoint frequency
   cfg.log.label = 'ho'
-  cfg.log.save_path = 'workspace/harmonic-oscillator/'
+  cfg.log.save_path = 'workspace/oscillator/'
   cfg.log.save_frequency = 5000
 
   cfg.debug.seed = 42

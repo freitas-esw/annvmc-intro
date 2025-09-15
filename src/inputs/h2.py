@@ -17,14 +17,14 @@ def get_config():
   cfg.system.args.R = 1.399 # Hydrogen distance for the H2 molecule
 
   # Initialization width for particle positions
-  cfg.system.init_width = 0.5
+  cfg.system.init_width = 5.
 
   # Artificial neural network architecture
   in_size = cfg.system.ndim * cfg.system.npart
   cfg.wavefunction.args.hidden_dims = [in_size, 64, 64, 64, 1] 
 
   # Optimization hyperparameters
-  cfg.vmc.hp.lr = 0.005
+  cfg.vmc.hp.lr = 0.004
   cfg.vmc.hp.delay = 3000
   cfg.vmc.hp.decay = 1.01
 
@@ -33,11 +33,11 @@ def get_config():
   cfg.vmc.mci_steps = 100
 
   # Initial trial move step
-  cfg.mcmc.width = 0.01
+  cfg.mcmc.width = 0.005
 
   # Log labels and checkpoint frequency
   cfg.log.label = 'h2'
-  cfg.log.save_path = 'workspace/h2-molecule/'
+  cfg.log.save_path = 'workspace/h2-mol/'
   cfg.log.save_frequency = 5000
 
   # Set the seed for RNG

@@ -7,15 +7,14 @@ def get_config():
   cfg = base.default()
 
   cfg.system.npart = 1
-  cfg.system.ndim = 3
+  cfg.system.ndim = 1
 
   # External and interaction potentials are:
-  cfg.system.external = potentials.yukawa_potential
+  cfg.system.external = potentials.morse_oscillator
   cfg.system.interaction = potentials.free_particle
 
   # Hamiltonian parameters
-  cfg.system.args.alpha = 1.0 # Strength of Yukawa potential
-  cfg.system.args.delta = 0.2 # Screenning factor
+  cfg.system.args.D = 0.5 
 
   # Initialization width for particle positions
   cfg.system.init_width = 0.5
@@ -34,11 +33,11 @@ def get_config():
   cfg.vmc.mci_steps = 100
 
   # Initial trial move step
-  cfg.mcmc.width = 0.01
+  cfg.mcmc.width = 0.0005
 
   # Log labels and checkpoint frequency
-  cfg.log.label = 'yu'
-  cfg.log.save_path = 'workspace/yukawa/'
+  cfg.log.label = 'mo'
+  cfg.log.save_path = 'workspace/morse/'
   cfg.log.save_frequency = 5000
 
   # Set the seed for RNG

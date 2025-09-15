@@ -7,24 +7,24 @@ def get_config():
   cfg = base.default()
 
   cfg.system.npart = 1
-  cfg.system.ndim = 1
+  cfg.system.ndim = 3
 
   # External and interaction potentials are:
-  cfg.system.external = potentials.morse_oscilator
+  cfg.system.external = potentials.hydrogen_molecule
   cfg.system.interaction = potentials.free_particle
 
   # Hamiltonian parameters
-  cfg.system.args.D = 0.5 
+  cfg.system.args.R = 2.004 # Hydrogen distance for the H2+ ion
 
   # Initialization width for particle positions
-  cfg.system.init_width = 0.5
+  cfg.system.init_width = 5.
 
   # Artificial neural network architecture
   in_size = cfg.system.ndim * cfg.system.npart
   cfg.wavefunction.args.hidden_dims = [in_size, 24, 32, 16, 1]
 
   # Optimization hyperparameters
-  cfg.vmc.hp.lr = 0.005
+  cfg.vmc.hp.lr = 0.02
   cfg.vmc.hp.delay = 3000
   cfg.vmc.hp.decay = 1.01
 
@@ -33,11 +33,11 @@ def get_config():
   cfg.vmc.mci_steps = 100
 
   # Initial trial move step
-  cfg.mcmc.width = 0.01
+  cfg.mcmc.width = 0.005
 
   # Log labels and checkpoint frequency
-  cfg.log.label = 'morse'
-  cfg.log.save_path = 'workspace/morse/'
+  cfg.log.label = 'h2p'
+  cfg.log.save_path = 'workspace/h2-ion/'
   cfg.log.save_frequency = 5000
 
   # Set the seed for RNG
