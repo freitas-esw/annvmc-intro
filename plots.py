@@ -82,12 +82,12 @@ if __name__ == "__main__":
   dir_h2 = ['h2-ion/', 'h2-mol/']
   path = 'workspace/'
   Eunits = ['$\\hbar\\omega$', 
-            '$\\hbar^2 / m a_{\\rm m}$', 
-            '$\\hbar^2 / m a_{\\rm pt}$',
-            '$\\hbar^2 / m a_{\\rm B}$',
-            '$\\hbar^2 / m a_{\\rm B}$',
-            '$\\hbar^2 / m a_{\\rm B}$',
-            '$\\hbar^2 / m a_{\\rm B}$']
+            '$\\hbar^2 / m a_{\\rm m}^2$', 
+            '$\\hbar^2 / m a_{\\rm pt}^2$',
+            '$\\hbar^2 / m a_{\\rm B}^2$',
+            '$\\hbar^2 / m a_{\\rm B}^2$',
+            '$\\hbar^2 / m a_{\\rm B}^2$',
+            '$\\hbar^2 / m a_{\\rm B}^2$']
   Lunits = ['a_{\\rm ho}', 
             'a_{\\rm m}', 
             'a_{\\rm pt}',
@@ -160,8 +160,8 @@ if __name__ == "__main__":
       fig, ax = plt.subplots(figsize=[5.5,4.5], dpi=300)
       ax.scatter(x, y, s=10, marker='.', ls='', c=colors[0], zorder=1, label='VMC simulation')
       ax.plot(x, gswf(x)**2, ls='--', c=colors[1], zorder=0, label='analytical result')
-      ax.set_xlabel('$x$ ['+Lunits[i]+']')
-      ax.set_ylabel('$\\rho (x)$ ['+Lunits[i]+'$^{-1}$]')
+      ax.set_xlabel('$x$ [$'+Lunits[i]+'$]')
+      ax.set_ylabel('$\\rho (x)$ [$'+Lunits[i]+'^{-1}$]')
 
       fig.legend(loc='upper right', fontsize='x-small', bbox_to_anchor=(0.95, 0.925))
       fig.tight_layout()
